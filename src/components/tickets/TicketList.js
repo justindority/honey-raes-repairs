@@ -6,7 +6,7 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "./tickets.css"
 
-export const TicketList = () => {
+export const TicketList = ({searchTermState}) => {
     const [tickets, setTickets] = useState([])
     const [filteredTickets, setFiltered] = useState([])
     const [emergency, setEmergency] = useState([false])
@@ -15,6 +15,16 @@ export const TicketList = () => {
 
     const localHoneyUser = localStorage.getItem("honey_user")
     const honeyUserObject = JSON.parse(localHoneyUser)
+
+
+    useEffect(
+        () => {
+            const searchedTickets = tickets.filter(t => {
+                return t.description.toLowerCase().startsWith(searchTermState.toLowerCase())})
+            setFiltered(searchedTickets)
+        },
+        [searchTermState]
+    )
 
     useEffect(
         () => {

@@ -1,0 +1,13 @@
+.employees {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.employee {
+    background-color: rgb(199, 198, 198);
+    padding: .2rem;
+    margin: .4rem;
+    border: 2px solid green;
+}
